@@ -1,4 +1,4 @@
 [run]
-include=flask_keystone/*
+include=flask_rax_keystone/*
 omit=
     *test_*
