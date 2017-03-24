@@ -1,6 +1,8 @@
 Flask Keystone
 ==============
 
+[![Build Status](https://travis-ci.org/Rackspace-DOT/flask_keystone.svg?branch=master)](https://travis-ci.org/Rackspace-DOT/flask_keystone)[![Coverage Status](https://coveralls.io/repos/github/Rackspace-DOT/flask_keystone/badge.svg?branch=master)](https://coveralls.io/github/Rackspace-DOT/flask_keystone?branch=master)
+
 Flask Keystone is a flask extension which wraps the [keystonemiddleware](https://github.com/openstack/keystonemiddleware "KeystoneMiddleware's Github Page") project, and provides access to Keystone
 users, project, and roles in a familiar, Flask-y manner. During development, you will find that most constructs appear very similar to flask-login.
 
