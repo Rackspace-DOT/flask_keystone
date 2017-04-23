@@ -1,5 +1,5 @@
 flask
 oslo.config
 oslo.log
-#keystoneauth1==2.16.1+rax.1
-#keystonemiddleware==4.12.1+rax.1
+keystoneauth1==2.16.1+rax.1
+keystonemiddleware==4.12.1+rax.1

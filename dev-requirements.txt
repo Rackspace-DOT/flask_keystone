@@ -1,6 +1,4 @@
 coverage
-coveralls
 oslotest
 nose
 sphinx
-tox
