@@ -165,7 +165,8 @@ setup(
         'oslo.config',
         'oslo.log',
         'keystonemiddleware',
-        'keystoneauth1'
+        'keystoneauth1',
+        'flask_oslolog'
     ],
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
