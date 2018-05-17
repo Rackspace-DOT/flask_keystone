@@ -17,7 +17,7 @@ This package can be installed like any other python packages:
 1. Clone this Repo
 2. ```python setup.py install```
 
-Getting Started with Flask Rax Keystone
+Getting Started with Flask Keystone
 =======================================
 
 Flask Keystone is a Flask Extension which adds the ability to control users and role-base access control in a `Flask` like way. Once the extension is installed, initialized, and configured, it exposes some fairly standard Flask constructs to interact with Keystone Users and application specific roles.
@@ -40,7 +40,7 @@ auth_version = 2.0
 auth_protocol = https
 delay_auth_decision = True
 
-[rax_access]
+[flask_keystone]
 roles = your_keystone_role:your_flask_role
 ```
 
@@ -51,9 +51,9 @@ Simply wrap the application object during instantiation:
 ```python
     from flask import Flask
 
-    from flask_rax_keystone import RaxKeystone
+    from flask_rax_keystone import FlaskKeystone
 
-    app = RaxKeystone(Flask(__name__))
+    app = FlaskKeystone(Flask(__name__))
 
     if __name__ == "__main__":  # pragma: nocover
         app = create_app(app_name=__name__)
