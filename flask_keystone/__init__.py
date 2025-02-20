@@ -33,8 +33,8 @@ function and decorators exist (most useful of which are
 :func:`FlaskKeystone.requires_role` and :func:`User.has_role`).
 """
 
-from flask import (_request_ctx_stack,
-                   request)
+import flask
+from flask import request
 
 from functools import wraps
 
@@ -61,8 +61,17 @@ __version__ = "0.2"
 current_user = LocalProxy(lambda: _get_user())
 
 
+def _get_request_ctx():
+    if hasattr(flask, 'globals') and hasattr(flask.globals, 'request_ctx'):
+        # get context for Flask >= 2.2
+        return flask.globals.request_ctx._get_current_object()
+    else:
+        # get context for Flask < 2.2
+        return flask._request_ctx_stack.top
+
+
 def _get_user():
-    return _request_ctx_stack.top.keystone_user
+    return _get_request_ctx().keystone_user
 
 
 class FlaskKeystone(object):
@@ -133,7 +142,7 @@ class FlaskKeystone(object):
         it to the request context for retrieval and comparison at any point
         during a single request.
         """
-        _request_ctx_stack.top.keystone_user = self.User(request)
+        _get_request_ctx().keystone_user = self.User(request)
 
     def _set_anonymous_user(self):
         """
@@ -142,7 +151,7 @@ class FlaskKeystone(object):
         This function should only be called if "allow_anonymous_access is
         set in the configuration for flask_keystone.
         """
-        _request_ctx_stack.top.keystone_user = self.Anonymous()
+        _get_request_ctx().keystone_user = self.Anonymous()
 
     def _parse_roles(self):
         """
